@@ -27,6 +27,7 @@ class Kernel extends BaseKernel
 
     public function registerBundles()
     {
+
         $contents = require $this->getProjectDir().'/config/bundles.php';
         foreach ($contents as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
@@ -34,6 +35,7 @@ class Kernel extends BaseKernel
             }
         }
     }
+
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
