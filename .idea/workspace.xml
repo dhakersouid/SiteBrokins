@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="426e23bb-01fc-4e13-b9d4-91d6455df452" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
+=======
+    <list default="true" id="426e23bb-01fc-4e13-b9d4-91d6455df452" name="Default" comment="" />
+>>>>>>> fa88dc700f2dac92320ccf0348716e806070bb36
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +43,11 @@
       <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="252">
+=======
+            <state relative-caret-position="204">
+>>>>>>> fa88dc700f2dac92320ccf0348716e806070bb36
               <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
@@ -159,7 +167,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../symfonybackend" />
+<<<<<<< HEAD
     <property name="HbShouldOpenHtmlAsHb" value="" />
+=======
+>>>>>>> fa88dc700f2dac92320ccf0348716e806070bb36
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -187,12 +198,19 @@
       <option name="presentableId" value="Default" />
       <updated>1531733819222</updated>
       <workItem from="1531733822440" duration="1794000" />
+<<<<<<< HEAD
       <workItem from="1531737552997" duration="9000" />
+=======
+>>>>>>> fa88dc700f2dac92320ccf0348716e806070bb36
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1803000" />
+=======
+    <option name="totallyTimeSpent" value="1794000" />
+>>>>>>> fa88dc700f2dac92320ccf0348716e806070bb36
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -247,6 +265,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="252">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
@@ -272,6 +291,9 @@
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
+=======
+        <state relative-caret-position="204">
+>>>>>>> fa88dc700f2dac92320ccf0348716e806070bb36
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
