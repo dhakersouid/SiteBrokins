@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/src/sinistre/AdressePersonne.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/AutreContrat.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/Communication.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/Comparatif.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/Contrat.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/Devis.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/DevoirDeConseil.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/DocumentContractuelFourni.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/Emails.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/Entreprise.php" />
+    <file url="file://$PROJECT_DIR$/src/sinistre/NouvelleSituationRc.php" />
+  </component>
+</project>
