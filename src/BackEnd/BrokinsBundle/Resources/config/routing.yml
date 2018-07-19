@@ -1,3 +1,8 @@
 back_end_brokins_homepage:
     path:     /
     defaults: { _controller: BackEndBrokinsBundle:Default:index }
+
+devis2:
+    path:     /test
+    defaults: { _controller: BackEndBrokinsBundle:Comparatif:add }
+
