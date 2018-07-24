@@ -3,6 +3,8 @@
 namespace BackEnd\BrokinsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use BackEnd\BrokinsBundle\Entity\AdressePersonne;
+
 
 /**
  * Personne
@@ -93,8 +95,8 @@ class Personne
 
     /**
      * @var string
-     * @OneToOne(targetEntity="Adresse", inversedBy="personne")
-     * @JoinColumn(name="id", referencedColumnName="id", nullable=true)
+     *
+     * @ORM\Column(name="ADRESSE", type="string", nullable=true)
      */
     private $adresse;
 
