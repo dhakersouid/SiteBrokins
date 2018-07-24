@@ -3,6 +3,8 @@
 namespace BackEnd\BrokinsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Contrat
@@ -167,6 +169,248 @@ class Contrat
      * @ORM\Column(name="CAPITAUX_GARANTIS", type="integer", nullable=true)
      */
     private $capitauxGarantis;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumeroContrat()
+    {
+        return $this->numeroContrat;
+    }
+
+    /**
+     * @param string $numeroContrat
+     */
+    public function setNumeroContrat($numeroContrat)
+    {
+        $this->numeroContrat = $numeroContrat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPersonne()
+    {
+        return $this->idPersonne;
+    }
+
+    /**
+     * @param int $idPersonne
+     */
+    public function setIdPersonne($idPersonne)
+    {
+        $this->idPersonne = $idPersonne;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * @param \DateTime $dateCreation
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateEffetContrat()
+    {
+        return $this->dateEffetContrat;
+    }
+
+    /**
+     * @param \DateTime $dateEffetContrat
+     */
+    public function setDateEffetContrat($dateEffetContrat)
+    {
+        $this->dateEffetContrat = $dateEffetContrat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFranchise()
+    {
+        return $this->franchise;
+    }
+
+    /**
+     * @param int $franchise
+     */
+    public function setFranchise($franchise)
+    {
+        $this->franchise = $franchise;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatutContrat()
+    {
+        return $this->statutContrat;
+    }
+
+    /**
+     * @param string $statutContrat
+     */
+    public function setStatutContrat($statutContrat)
+    {
+        $this->statutContrat = $statutContrat;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateEnvoi()
+    {
+        return $this->dateEnvoi;
+    }
+
+    /**
+     * @param \DateTime $dateEnvoi
+     */
+    public function setDateEnvoi($dateEnvoi)
+    {
+        $this->dateEnvoi = $dateEnvoi;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTypePaiement()
+    {
+        return $this->typePaiement;
+    }
+
+    /**
+     * @param int $typePaiement
+     */
+    public function setTypePaiement($typePaiement)
+    {
+        $this->typePaiement = $typePaiement;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatePaiement()
+    {
+        return $this->datePaiement;
+    }
+
+    /**
+     * @param \DateTime $datePaiement
+     */
+    public function setDatePaiement($datePaiement)
+    {
+        $this->datePaiement = $datePaiement;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateEcheanceContrat()
+    {
+        return $this->dateEcheanceContrat;
+    }
+
+    /**
+     * @param \DateTime $dateEcheanceContrat
+     */
+    public function setDateEcheanceContrat($dateEcheanceContrat)
+    {
+        $this->dateEcheanceContrat = $dateEcheanceContrat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAssureur()
+    {
+        return $this->assureur;
+    }
+
+    /**
+     * @param int $assureur
+     */
+    public function setAssureur($assureur)
+    {
+        $this->assureur = $assureur;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduitCommercial()
+    {
+        return $this->idProduitCommercial;
+    }
+
+    /**
+     * @param int $idProduitCommercial
+     */
+    public function setIdProduitCommercial($idProduitCommercial)
+    {
+        $this->idProduitCommercial = $idProduitCommercial;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduitTechnique()
+    {
+        return $this->idProduitTechnique;
+    }
+
+    /**
+     * @param int $idProduitTechnique
+     */
+    public function setIdProduitTechnique($idProduitTechnique)
+    {
+        $this->idProduitTechnique = $idProduitTechnique;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrimeTtcAnnuelle()
+    {
+        return $this->primeTtcAnnuelle;
+    }
+
+    /**
+     * @param float $primeTtcAnnuelle
+     */
+    public function setPrimeTtcAnnuelle($primeTtcAnnuelle)
+    {
+        $this->primeTtcAnnuelle = $primeTtcAnnuelle;
+    }
+
+
 
 
 }

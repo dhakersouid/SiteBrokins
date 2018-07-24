@@ -4,6 +4,12 @@ parameters:
     #parameter_name: value
 
 services:
+    admin.contrat:
+        class: Admin\AdminContrat
+        arguments: [~, BackEnd\BrokinsBundle\Entity\Contrat, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Contrat }
+        public: true
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

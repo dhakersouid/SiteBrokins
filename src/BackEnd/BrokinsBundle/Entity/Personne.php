@@ -93,8 +93,6 @@ class Personne
 
     /**
      * @var string
-     * @OneToOne(targetEntity="Adresse", inversedBy="personne")
-     * @JoinColumn(name="id", referencedColumnName="id", nullable=true)
      */
     private $adresse;
 

@@ -21,12 +21,12 @@ class ComparatifController extends Controller
 {
 
     public function addAction()
-    {
+{
 
-        $comparatif= new Comparatif();
+$comparatif= new Comparatif();
 
-        
 
-        return $this->render('@BackEndBrokins/test/devis2.html.twig', array());
-    }
+
+return $this->render('@BackEndBrokins/test/devis2.html.twig', array());
+}
 }

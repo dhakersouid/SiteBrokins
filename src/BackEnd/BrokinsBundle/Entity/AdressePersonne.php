@@ -86,8 +86,6 @@ class AdressePersonne
 
     /**
      * @var integer
-     * @OneToOne(targetEntity="Personne" mappedBy="adresse")
-     * @JoinColumn(name="id", referencedColumnName="id", nullable=true)
      */
     private $personne;
 
