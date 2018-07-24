@@ -30,6 +30,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
@@ -40,11 +42,11 @@ twig:
 doctrine:
     dbal:
         driver: pdo_mysql
-        host: '%database_host%'
-        port: '%database_port%'
-        dbname: '%database_name%'
-        user: '%database_user%'
-        password: '%database_password%'
+        host: localhost
+        port: 3306
+        dbname: brokins_db
+        user: root
+        password:
         charset: UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -66,6 +68,7 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+
 sonata_block:
     blocks:
         # enable the SonataAdminBundle block
@@ -86,3 +89,11 @@ sonata_admin:
         # other configuration options
         search:              '@SonataAdmin/Core/search.html.twig'
         search_result_block: '@SonataAdmin/Block/block_search_result.html.twig'
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: BackEndBrokinsBundle\Entity\User
+    from_email:
+        address: dhaker.souid@brokins.fr
+        sender_name: dhaker

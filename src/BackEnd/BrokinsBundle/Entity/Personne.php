@@ -3,6 +3,8 @@
 namespace BackEnd\BrokinsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use BackEnd\BrokinsBundle\Entity\AdressePersonne;
+
 
 /**
  * Personne
@@ -93,6 +95,8 @@ class Personne
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ADRESSE", type="string", nullable=true)
      */
     private $adresse;
 

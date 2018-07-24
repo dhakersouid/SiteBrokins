@@ -16,16 +16,40 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use BackEnd\BrokinsBundle\Entity\Comparatif;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class ComparatifController extends Controller
 {
+    /**
+     *
+     * @Method("POST")
+     *
+     */
+    public function addAction(Request $request)
+    {
+
+        $comparatif= new Comparatif();
+
+
+        dump($request);
+        $siren= $request->request->get('siren');
+        dump($siren);
 
     public function addAction()
 {
 
 $comparatif= new Comparatif();
+        return $this->render('@BackEndBrokins/test/devis2.html.twig', array());
+    }
+
+    public function ObtenirDevisAction(Request $request)
+    {
 
 
+
+        dump($request);
+        $siren= $request->request->get('siren');
+        dump($siren);
 
 return $this->render('@BackEndBrokins/test/devis2.html.twig', array());
 }
