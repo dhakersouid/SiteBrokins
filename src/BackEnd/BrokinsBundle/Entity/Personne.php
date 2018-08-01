@@ -30,12 +30,7 @@ class Personne
      */
     private $identifiantBrokins;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="ESPACE_CLIENT", type="boolean", nullable=true)
-     */
-    private $espaceClient;
+
 
     /**
      * @var \DateTime
@@ -115,6 +110,13 @@ class Personne
     private $naturePersonne;
 
     /**
+     * @ORM\OneToOne(targetEntity="BackEnd\BrokinsBundle\Entity\User", cascade={"persist"})
+     */
+    private $user;
+
+
+
+    /**
      * @return int
      */
     public function getId()
@@ -146,21 +148,7 @@ class Personne
         $this->identifiantBrokins = $identifiantBrokins;
     }
 
-    /**
-     * @return bool
-     */
-    public function isEspaceClient()
-    {
-        return $this->espaceClient;
-    }
 
-    /**
-     * @param bool $espaceClient
-     */
-    public function setEspaceClient($espaceClient)
-    {
-        $this->espaceClient = $espaceClient;
-    }
 
     /**
      * @return \DateTime
@@ -337,6 +325,24 @@ class Personne
     {
         $this->naturePersonne = $naturePersonne;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
 
 
 }

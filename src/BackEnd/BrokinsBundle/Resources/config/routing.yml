@@ -2,7 +2,13 @@ back_end_brokins_homepage:
     path:     /
     defaults: { _controller: BackEndBrokinsBundle:Default:index }
 
-devis2:
+test:
     path:     /test
     defaults: { _controller: BackEndBrokinsBundle:Comparatif:add }
 
+login:
+    path:     /devis
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"

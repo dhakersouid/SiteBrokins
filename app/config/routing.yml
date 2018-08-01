@@ -22,3 +22,7 @@ _sonata_admin:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+user_controller:
+    resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
+    prefix:   /
+

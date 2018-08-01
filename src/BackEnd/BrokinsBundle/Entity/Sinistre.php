@@ -22,11 +22,14 @@ class Sinistre
     private $id;
 
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="DATE_CREATION", type="string", length=500, nullable=true)
      */
     private $dateCreation;
+
+
+
 
     /**
      * @var integer

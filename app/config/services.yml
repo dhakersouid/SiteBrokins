@@ -10,6 +10,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Contrat }
         public: true
+    admin.user:
+        class: Admin\AdminUser
+        arguments: [~, BackEnd\BrokinsBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: fos_user }
+        public: true
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
