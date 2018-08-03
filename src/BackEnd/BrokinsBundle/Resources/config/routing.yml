@@ -1,13 +1,13 @@
 back_end_brokins_homepage:
-    path:     /
+    path:     /admintest
     defaults: { _controller: BackEndBrokinsBundle:Default:index }
 
 test:
-    path:     /test
+    path:     /usertest
     defaults: { _controller: BackEndBrokinsBundle:Comparatif:add }
 
 login:
-    path:     /devis
+    path:     /login
     defaults: { _controller: FOSUserBundle:Security:login }
 
 fos_user_security:

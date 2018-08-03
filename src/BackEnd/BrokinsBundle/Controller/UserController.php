@@ -20,7 +20,7 @@ class UserController extends Controller
      * @Route("/login", name="login")
      */
     public function login(Request $request ,AuthenticationUtils $authenticationUtils)
-{
+    {
 
     $a="a";
     dump($a);
@@ -36,5 +36,5 @@ class UserController extends Controller
         'last_username' => $lastUsername,
         'error'         => $error,
     ));
-}
+    }
 }

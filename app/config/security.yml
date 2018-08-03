@@ -40,6 +40,7 @@ security:
                 check_path:     /login_check
                 success_handler: redirect.after.login
             
+            logout: true
 
                 
             anonymous:    true

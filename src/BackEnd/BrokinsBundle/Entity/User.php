@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -54,6 +55,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+        $this->addRole('ROLE_USER');
     }
 
     /**
