@@ -12,3 +12,8 @@ login:
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+brokins_ws_authentification :
+    type: rest
+    resource: "BackEndBrokinsBundle:WebServices/WSUser"
+    prefix: api_

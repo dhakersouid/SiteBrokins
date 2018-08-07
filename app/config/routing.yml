@@ -26,3 +26,7 @@ user_controller:
     resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
     prefix:   /
 
+rest :
+  type : rest
+  resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
+  prefix : /api

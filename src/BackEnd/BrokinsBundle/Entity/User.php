@@ -11,13 +11,31 @@ use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\AttributeOverride;
+use Doctrine\ORM\Mapping\AttributeOverrides;
+use Doctrine\ORM\Mapping\Column;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="User")
+ * * @AttributeOverrides({
+ *      @AttributeOverride(name="usernameCanonical",
+ *          column=@Column(
+ *              type     = "string",
+ *              length   = 155,
+ *          )
+ *      ),
+ *      @AttributeOverride(name="emailCanonical",
+ *          column=@Column(
+ *              type     = "string",
+ *              length   = 155,
+ *          )
+ *      )
+ * })
  */
 class User extends BaseUser
 {
+    const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
      * @ORM\Id
@@ -55,7 +73,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
-        $this->addRole('ROLE_USER');
+        $this->roles = array('ROLE_USER');
     }
 
     /**

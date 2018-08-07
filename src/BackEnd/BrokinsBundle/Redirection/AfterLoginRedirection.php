@@ -50,9 +50,9 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             $redirection = new RedirectResponse($this->router->generate('devis'));
         }
         elseif (in_array('ROLE_USER', $rolesTab, true) ){
-            $redirection = new RedirectResponse($this->router->generate('devis'));
-        }else {
             $redirection = new RedirectResponse($this->router->generate('test'));
+        }else {
+            $redirection = new RedirectResponse($this->router->generate('login'));
         }
         
        
