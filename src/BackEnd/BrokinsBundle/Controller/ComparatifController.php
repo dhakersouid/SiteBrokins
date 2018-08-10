@@ -8,6 +8,8 @@
 
 namespace BackEnd\BrokinsBundle\Controller;
 
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Routing\ClassResourceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -18,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-class ComparatifController extends Controller
+class ComparatifController extends FOSRestController implements ClassResourceInterface
 {
     /**
      *
@@ -32,7 +34,7 @@ class ComparatifController extends Controller
 
 
         dump($request);
-        $siren = $request->request->get('siren');
+        $siren = $request->get('siren');
         dump($siren);
 
 

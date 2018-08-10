@@ -1,11 +1,10 @@
 
 back_end_brokins:
     resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
-    prefix:   /
+    type: rest
+    prefix: /api
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+
 
 
 
@@ -18,15 +17,6 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
+api_login_check:
+    path: /api/login_check
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-user_controller:
-    resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
-    prefix:   /
-
-rest :
-  type : rest
-  resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
-  prefix : /api

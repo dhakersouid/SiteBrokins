@@ -12,41 +12,91 @@ namespace BackEnd\BrokinsBundle\Controller\WebServices;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use BackEnd\BrokinsBundle\Helper\ControllerHelper;
+
+
+use BackEnd\BrokinsBundle\Entity\User;
+use BackEnd\BrokinsBundle\Manager\MyUserManager;
 
 class WSUserController extends FOSRestController
 {
-    public function loginAction($user) {
-        $c = "ws";
-        dump($c);
-        $request = $this->container->get('request');
-        /* @var $request \Symfony\Component\HttpFoundation\Request */
-        $session = $request->getSession();
-        /* @var $session \Symfony\Component\HttpFoundation\Session\Session */
 
-        // get the error if any (works with forward and redirect -- see below)
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } elseif (null !== $session && $session->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = '';
-        }
 
-        if ($error) {
-            // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
-            $error = $error->getMessage();
-        }
-        // last username entered by the user
-        $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
+    public function testPOSTLoginUser()
+    {
+        $userName = "testuser";
+        $password = "test";
 
-        $csrfToken = $this->container->has('form.csrf_provider') ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate') : null;
+        $user = $this->createUser($userName, $password);
 
-        return $this->renderLogin(array(
-            'last_username' => $lastUsername,
-            'error' => $error,
-            'csrf_token' => $csrfToken,
-        ));
+        $this->client->request(
+            'POST',
+            '/users/login',
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json',
+                'PHP_AUTH_USER' => $userName,
+                'PHP_AUTH_PW'   => $password,
+            ]
+        );
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $responseArr = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertArrayHasKey('token', $responseArr);
+
+
     }
 
+
+
+
+    public function loginAction(Request $request)
+    {
+        $userName = "roletest";
+        $password = "test";
+
+        $user = $this->getDoctrine()
+            ->getRepository('BackEndBrokinsBundle:User')
+            ->findOneBy(['username' => $userName]);
+
+        $response = new Response($this->serialize(['token' => $user]), Response::HTTP_OK);
+
+        return $this->setBaseHeaders($response);
+    }
+
+    /**
+     * Returns token for user.
+     *
+     * @param User $user
+     *
+     * @return array
+     */
+    public function getToken(User $user)
+    {
+        return $this->container->get('lexik_jwt_authentication.encoder')
+            ->encode([
+                'username' => $user->getUsername(),
+                'exp' => $this->getTokenExpiryDateTime(),
+            ]);
+    }
+
+    /**
+     * Returns token expiration datetime.
+     *
+     * @return string Unixtmestamp
+     */
+    private function getTokenExpiryDateTime()
+    {
+        $tokenTtl = $this->container->getParameter('lexik_jwt_authentication.token_ttl');
+        $now = new \DateTime();
+        $now->add(new \DateInterval('PT'.$tokenTtl.'S'));
+
+        return $now->format('U');
+    }
 }
