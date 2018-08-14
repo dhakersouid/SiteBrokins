@@ -1,3 +1,10 @@
 test:
     path:     /usertest
     defaults: { _controller: BackEndBrokinsBundle:Comparatif:add }
+
+user_services :
+    resource: "@BackEndBrokinsBundle/Controller/"
+    type:     annotation
+    prefix:   /users
+    defaults:
+        _format: json

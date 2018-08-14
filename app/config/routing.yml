@@ -4,10 +4,6 @@ back_end_brokins:
     type: rest
     prefix: /api
 
-
-
-
-
 admin_area:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin

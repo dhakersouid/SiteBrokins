@@ -9,102 +9,65 @@
 namespace BackEnd\BrokinsBundle\Controller;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use FOS\RestBundle\Controller\FOSRestController;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use BackEnd\BrokinsBundle\Manager\MyUserManager;
+use BackEnd\BrokinsBundle\Helper\ControllerHelper;
 class UserController extends Controller
 {
+
     /**
-     * @Route("/login", name="login")
+     * @Route("/login", name="user_login")
+     * @Method("POST")
      */
-    public function login(Request $request ,AuthenticationUtils $authenticationUtils)
+    public function loginAction(Request $request)
     {
-
-    $a="a";
-    dump($a);
-    // get the login error if there is one
-    $error = $authenticationUtils->getLastAuthenticationError();
-    $b="b";
-    dump($b);
-    // last username entered by the user
-    $lastUsername = $authenticationUtils->getLastUsername();
-    $c="c";
-    dump($c);
-    return $this->render('@BackEndBrokins/test/devis2.html.twig', array(
-        'last_username' => $lastUsername,
-        'error'         => $error,
-    ));
+        $usernameOrEmail = $request->getUser();
+        $password = $request->getPassword();
+        /** @var MyUserManager */
+        $userManager = $this->get('my_user_manager');
+        $user = $userManager->findUserByUsernameOrEmail($usernameOrEmail);
+        if (!$user) {
+            throw $this->createNotFoundException();
+        }
+        $isValid = $this->get('security.password_encoder')
+            ->isPasswordValid($user, $password);
+        if (!$isValid) {
+            throw new BadCredentialsException();
+        }
+        $token = $this->getToken($user);
+        $response = new Response($this->serialize(['token' => $token]), Response::HTTP_OK);
+        return $this->setBaseHeaders($response);
     }
-
-    protected function createUser($userName, $password)
+    /**
+     * Returns token for user.
+     *
+     * @param User $user
+     *
+     * @return array
+     */
+    public function getToken(User $user)
     {
-        $userManager = $this->getService('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setEnabled(true);
-        $user->setPlainPassword($password);
-        $user->setUsername($userName);
-        $user->setEmail('email@email.com');
-        $userManager->updateUser($user);
-
-        return $user;
+        return $this->container->get('lexik_jwt_authentication.encoder')
+            ->encode([
+                'username' => $user->getUsername(),
+                'exp' => $this->getTokenExpiryDateTime(),
+            ]);
     }
-
-    public function loadProfileAction(){
-        $user =$this->getUser();
-        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-
-            return $this->render('BackEndBrokinsBundle:Default:index.html.twig'
-            );
-        }
-        else if ($this->get('security.context')->isGranted('ROLE_USER')) {
-
-            return $this->render('BackEndBrokinsBundle:test:devis2.html.twig'
-            );
-        }
-
-    }
-    public function homeAction() {
-        return $this->render('BackEndBrokinsBundle:test:devis2.html.twig');
-    }
-    public function submitAction() {
-        // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('back_end_brokins_homepage');
-        }
-    }
-
-    public function updateAction($id=0)
+    /**
+     * Returns token expiration datetime.
+     *
+     * @return string Unixtmestamp
+     */
+    private function getTokenExpiryDateTime()
     {
-        $request = $this->container->get('request');
-
-        $url = $this->get('router')
-            ->generate('brokins_user_profile');
-        return $this->redirect($url, 301);
-    }
-
-    public function verificationNouveauMdpAction(){
-        $reponse = array("reponse"=>"succes");
-        $originMdp = $this->getUser()->getPassword();
-        $request = $this->container->get('request');
-        $mdp = $request->get("mdp","");
-        $salt = $this->getUser()->getSalt();
-        $salted = $mdp.'{'.$salt.'}';
-        $digest = hash('sha512',$salted,true);
-        for ($i=1;$i<5000;$i++){
-            $digest = hash('sha512',$digest.$salted,true);
-        }
-        $encodedPassword = base64_encode($digest);
-        $newMdp = $request->get("newMdp","");
-        $confirmMdp = $request->get("confirmMdp","");
-        if($encodedPassword != $originMdp){
-            $reponse["reponse"] = "filedOrigin";
-        }
-        if($newMdp != $confirmMdp){
-            $reponse["reponse"] = "filedNew";
-        }
-        return new JsonResponse($reponse, 200);
+        $tokenTtl = $this->container->getParameter('lexik_jwt_authentication.token_ttl');
+        $now = new \DateTime();
+        $now->add(new \DateInterval('PT'.$tokenTtl.'S'));
+        return $now->format('U');
     }
 }

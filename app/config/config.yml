@@ -86,7 +86,7 @@ fos_rest:
         failed_validation: HTTP_BAD_REQUEST
         default_engine: twig
     routing_loader:
-        default_format: twig
+        default_format: json
     exception:
        enabled: true
        exception_controller: 'FOS\RestBundle\Controller\ExceptionController::showAction'
