@@ -1,0 +1,227 @@
+<!-- Cette Inteface c'est La Page Qui Contient Le Formulaire Pour Pouvoir Ajouter Une Nouvelle Adresses Partenaires Assureurs
+ Qui Contient Aussi L'API : Google Place Auto Complete-->
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/components.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/responsee.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/owl-carousel/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/owl-carousel/owl.theme.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/template-style.css') }}">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/modernizr.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/modernizr.js') }}"></script>
+
+<center><h2>Gestion Des Contrats</h2></center>
+<form class="customform"  method="POST">
+
+    <div class="s-12 l-7 center">
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='numeroContrat' placeholder="Numéro du Contrat" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateCreation' placeholder="Date de Creation" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateEffetContrat' placeholder="Date Effet Contrat" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='franchise' placeholder="Franchise" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <select name="statutContrat" onChange="combo(this, 'theinput')" placeholder="Statut Du Contrat" required="true">
+                <option></option>
+                <option>
+                <option>Résilié</option>
+                <option>Renoncé</option>
+                <option>En cours</option>
+                <option>Suspendu</option>
+                <option>Impayé</option>
+            </select>
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateEnvoi' placeholder="Date D'envoi" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+
+            <select name="typePaiement" onChange="combo(this, 'theinput')" placeholder="Type Paiement" required="true">
+                <option></option>
+                <option>
+                <option>CARTE BLEU</option>
+                <option>CHEQUE</option>
+                <option>VIREMENT</option>
+                <option>PRELEVEMENT</option>
+            </select>
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='datePaiement' placeholder="Date de Paiement" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateEcheanceContrat' placeholder="Date D'Echéance du Contrat" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <select name="assureur" onChange="combo(this, 'theinput')" placeholder="Assureur" required="true">
+                <h6>Choisissez Assureur</h6>
+                <option>
+                <option>CONSTRUCTION DECENNALE : TETRIS</option>
+                <option>CONSTRUCTION DECENNALE : RCB SATEC</option>
+                <option>CONSTRUCTION DECENNALE : SPVIE</option>
+                <option>CONSTRUCTION DECENNALE : APRIL</option>
+
+                <option>CONSTRUCTION DOMMAGES OUVRAGE : TETRIS</option>
+                <option>CONSTRUCTION DOMMAGES OUVRAGE : RCB SATEC</option>
+                <option>CONSTRUCTION DOMMAGES OUVRAGE : HELVETIA</option>
+                <option>CONSTRUCTION DOMMAGES OUVRAGE : APRIL</option>
+
+                <option>RESPONSABILITE : GENERALI</option>
+                <option>RESPONSABILITE : SPVIE</option>
+                <option>RESPONSABILITE : NOVELIA</option>
+                <option>RESPONSABILITE : SOLLY AZAR</option>
+
+                <option>AUTO : GENERALI</option>
+                <option>AUTO : SOLLY AZAR</option>
+                <option>AUTO : NOVELIA</option>
+                <option>AUTO : APRIL</option>
+
+                <option>MOTO : SOLLY AZAR</option>
+                <option>MOTO : APRIL</option>
+                <option>MOTO : LMDM</option>
+                <option>MOTO : ECA</option>
+
+                <option>HABITATION : GENERALI</option>
+                <option>HABITATION : APRIL</option>
+                <option>HABITATION : SOLLY AZAR</option>
+                <option>HABITATION : NOVELIA</option>
+
+                <option>MULTIRISQUE IMMEUBLE : GENERALI</option>
+                <option>MULTIRISQUE IMMEUBLE : SPVIE</option>
+                <option>MULTIRISQUE IMMEUBLE : AXELLIANCE</option>
+                <option>MULTIRISQUE IMMEUBLE : TETRIS</option>
+
+                <option>MULTIRISQUE BUREAUX LOCAUX COMMERCE : GENERALI</option>
+                <option>MULTIRISQUE BUREAUX LOCAUX COMMERCE : AXELLIANCE</option>
+                <option>MULTIRISQUE BUREAUX LOCAUX-COMMERCE : SPVIE</option>
+                <option>MULTIRISQUE BUREAUX LOCAUX-COMMERCE : NOVELIA</option>
+
+                <option>SANTE TNS : GENERALI</option>
+                <option>SANTE TNS : CIPRES</option>
+                <option>SANTE TNS : SPVIE</option>
+                <option>SANTE TNS : NOVELIA</option>
+
+                <option>SANTE SALARIE ENTREPRISE : GENERALI</option>
+                <option>SANTE SALARIE ENTREPRISE : CIPRES</option>
+                <option>SANTE SALARIE ENTREPRISE : SPVIE</option>
+                <option>SANTE SALARIE ENTREPRISE : NOVELIA</option>
+
+                <option>PRËT : GENERALI</option>
+                <option>PRËT : SOLLY AZAR</option>
+                <option>PRËT : AXELLIANCE</option>
+                <option>PRËT : APRIL</option>
+
+                <option>PROETCTION JURIDIQUE : GROUPAMA</option>
+                <option>PROETCTION JURIDIQUE : SPVIE</option>
+                <option>PROETCTION JURIDIQUE : APRIL</option>
+                <option>PROETCTION JURIDIQUE : NOVELIA</option>
+
+                <option>PROETCTION PREVOYANCE : CIPRES</option>
+                <option>PROETCTION PREVOYANCE : SPVIE</option>
+                <option>PROETCTION PREVOYANCE : SOLLY AZAR</option>
+                <option>PROETCTION PREVOYANCE : GENERALI</option>
+            </select>
+        </div>
+
+        <div class="s-12 l-7 center">
+            <select name="idProduitCommercial" onChange="combo(this, 'theinput')" placeholder="Produit Commercial" required="true">
+                <option></option>
+                <option>
+                <option>Responsabilité Civile Exploitation</option>
+                <option>Responsabilité Civile Produit</option>
+                <option>Responsabilité Civile Profesionnelle</option>
+                <option>Responsabilité Civile Dirigeants & Madataires Sociaux</option>
+                <option>Protection Juridique</option>
+                <option>Décennale</option>
+                <option>Dommages ouvrage</option>
+                <option>Auto Personnelle</option>
+                <option>Auto Professionnelle</option>
+                <option>Moto Personnelle</option>
+                <option>Moto Professionnelle</option>
+                <option>Flotte Auto</option>
+                <option>Flotte Moto</option>
+                <option>Marchandises Transportées</option>
+                <option>Transport</option>
+                <option>Bris de Machine</option>
+                <option>Risques Informatiques</option>
+                <option>Multirisques Bureaux Locaux Commerce</option>
+                <option>Perte d'Exploitation</option>
+                <option>Mutirisque Immeuble - PNO</option>
+                <option>Crédit professionnels</option>
+                <option>Mutuelle Prévoyance Madelin</option>
+                <option>Mutuelle TNS/Madelin</option>
+                <option>Homme clef</option>
+                <option>Prévoyance TNS/Madelin</option>
+                <option>Retraite Complémentaire</option>
+                <option>Retraite Madelin</option>
+                <option>Assurance Drone</option>
+                <option>Assistance</option>
+
+
+            </select>
+        </div>
+        <div class="s-12 l-7 center">
+            <select name="idProduitTechnique" onChange="combo(this, 'theinput')" placeholder="Produit Technique" required="true">
+                <option></option>
+                <option>
+                <option>Responsabilité Civile Exploitation</option>
+                <option>Responsabilité Civile Produit</option>
+                <option>Responsabilité Civile Profesionnelle</option>
+                <option>Responsabilité Civile Dirigeants & Madataires Sociaux</option>
+                <option>Protection Juridique</option>
+                <option>Décennale</option>
+                <option>Tout Risque Chantier</option>
+                <option>Dommages ouvrage</option>
+                <option>Auto Personnelle</option>
+                <option>Auto Professionnelle</option>
+                <option>Moto Personnelle</option>
+                <option>Moto Professionnelle</option>
+                <option>Flotte Auto</option>
+                <option>Flotte Moto</option>
+                <option>Marchandises Transportées</option>
+                <option>Transport</option>
+                <option>Bris de Machine</option>
+                <option>Risques Informatiques</option>
+                <option>Multirisques Bureaux Locaux Commerce</option>
+                <option>Perte d'Exploitation</option>
+                <option>Mutirisque Immeuble - PNO</option>
+                <option>Prêt Immobilier</option>
+                <option>Prêt Professionnel</option>
+                <option>Crédit professionnels</option>
+                <option>Mutuelle Prévoyance Madelin</option>
+                <option>Mutuelle TNS/Madelin</option>
+                <option>Homme clef</option>
+                <option>Prévoyance TNS/Madelin</option>
+                <option>Retraite Complémentaire</option>
+                <option>Retraite Madelin</option>
+                <option>Assurance Drone</option>
+                <option>Assistance</option>
+            </select>
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='primeTtcAnnuelle' placeholder="Prime TTC Annuelle" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='primeTtcMensuelle' placeholder="Prime TTC Mensuelle" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='fraisFractionnement' placeholder="Frais Fractionnement" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='fractionnement' placeholder="Fractionnement" required="true">
+        </div>
+
+
+    </div>
+
+
+
+    <div class="s-12 l-5 center"><button type="submit">Ajouter Adresse Partenaire Assureur</button></div>
+</form>

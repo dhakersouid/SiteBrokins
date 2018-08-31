@@ -35,12 +35,9 @@ class ComparatifController extends Controller
         $siren= $request->request->get('siren');
         dump($siren);
 
-    public function addAction()
-{
 
-$comparatif= new Comparatif();
-        return $this->render('@BackEndBrokins/test/devis2.html.twig', array());
-    }
+    $comparatif= new Comparatif();
+        return $this->render('@BackEndBrokins/test/devis2.html.twig', array()); }
 
     public function ObtenirDevisAction(Request $request)
     {

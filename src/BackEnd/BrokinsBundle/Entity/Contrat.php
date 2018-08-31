@@ -75,7 +75,7 @@ class Contrat
     /**
      * @var integer
      *
-     * @ORM\Column(name="TYPE_PAIEMENT", type="integer", nullable=true)
+     * @ORM\Column(name="TYPE_PAIEMENT", type="string", length=50, nullable=true)
      */
     private $typePaiement;
 
@@ -96,21 +96,21 @@ class Contrat
     /**
      * @var integer
      *
-     * @ORM\Column(name="ASSUREUR", type="integer", nullable=true)
+     * @ORM\Column(name="ASSUREUR", type="string", length=50, nullable=true)
      */
     private $assureur;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_PRODUIT_COMMERCIAL", type="integer", nullable=true)
+     * @ORM\Column(name="ID_PRODUIT_COMMERCIAL", type="string", length=50, nullable=true)
      */
     private $idProduitCommercial;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_PRODUIT_TECHNIQUE", type="integer", nullable=true)
+     * @ORM\Column(name="ID_PRODUIT_TECHNIQUE", type="string", length=50, nullable=true)
      */
     private $idProduitTechnique;
 
@@ -288,6 +288,118 @@ class Contrat
     public function getDateEnvoi()
     {
         return $this->dateEnvoi;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrimeTtcMensuelle()
+    {
+        return $this->primeTtcMensuelle;
+    }
+
+    /**
+     * @param float $primeTtcMensuelle
+     */
+    public function setPrimeTtcMensuelle($primeTtcMensuelle)
+    {
+        $this->primeTtcMensuelle = $primeTtcMensuelle;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFraisFractionnement()
+    {
+        return $this->fraisFractionnement;
+    }
+
+    /**
+     * @param int $fraisFractionnement
+     */
+    public function setFraisFractionnement($fraisFractionnement)
+    {
+        $this->fraisFractionnement = $fraisFractionnement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFractionnement()
+    {
+        return $this->fractionnement;
+    }
+
+    /**
+     * @param string $fractionnement
+     */
+    public function setFractionnement($fractionnement)
+    {
+        $this->fractionnement = $fractionnement;
+    }
+
+    /**
+     * @return int
+     */
+    public function getListeGarantie()
+    {
+        return $this->listeGarantie;
+    }
+
+    /**
+     * @param int $listeGarantie
+     */
+    public function setListeGarantie($listeGarantie)
+    {
+        $this->listeGarantie = $listeGarantie;
+    }
+
+    /**
+     * @return int
+     */
+    public function getListeExclusion()
+    {
+        return $this->listeExclusion;
+    }
+
+    /**
+     * @param int $listeExclusion
+     */
+    public function setListeExclusion($listeExclusion)
+    {
+        $this->listeExclusion = $listeExclusion;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReferenceDocumentaire()
+    {
+        return $this->referenceDocumentaire;
+    }
+
+    /**
+     * @param int $referenceDocumentaire
+     */
+    public function setReferenceDocumentaire($referenceDocumentaire)
+    {
+        $this->referenceDocumentaire = $referenceDocumentaire;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCapitauxGarantis()
+    {
+        return $this->capitauxGarantis;
+    }
+
+    /**
+     * @param int $capitauxGarantis
+     */
+    public function setCapitauxGarantis($capitauxGarantis)
+    {
+        $this->capitauxGarantis = $capitauxGarantis;
     }
 
     /**

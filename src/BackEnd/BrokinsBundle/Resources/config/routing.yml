@@ -6,3 +6,61 @@ devis2:
     path:     /test
     defaults: { _controller: BackEndBrokinsBundle:Comparatif:add }
 
+#C'est la statistique Des Nombres de Partenaires Assureurs Dans notre Plateforme
+
+_graphePie:
+    path:     /chartPie
+    defaults: { _controller: BackEndBrokinsBundle:Graphe:chartPie}
+
+
+#Ce sont les routes de la partie Adresse Partenaire Assureur
+
+ajoutadresse:
+    path:     /ajout
+    defaults: { _controller: BackEndBrokinsBundle:AdressePartenaireAssureur:ajout }
+
+
+listeadresse:
+    path:     /List
+    defaults: { _controller: BackEndBrokinsBundle:AdressePartenaireAssureur:List }
+
+
+reserv_s:
+    path:     /supprimers/{id}
+    defaults: { _controller: BackEndBrokinsBundle:AdressePartenaireAssureur:supprimers }
+
+
+#Ce sont les routes de la partie Contrat
+
+ajoutcontrat:
+    path:     /AjoutContrat
+    defaults: { _controller: BackEndBrokinsBundle:Contrat:ajout }
+
+
+listecontrat:
+    path:     /ListContrat
+    defaults: { _controller: BackEndBrokinsBundle:Contrat:List }
+
+
+supprimercontrat:
+    path:     /SupprimerContrat/{id}
+    defaults: { _controller: BackEndBrokinsBundle:Contrat:supprimers }
+
+
+
+
+#Ce sont les routes de la partie Résiliation
+ajoutresiliation:
+    path:     /AjoutResiliation
+    defaults: { _controller: BackEndBrokinsBundle:Resiliation:ajout }
+
+
+listeresiliation:
+    path:     /ListResiliation
+    defaults: { _controller: BackEndBrokinsBundle:Resiliation:List }
+
+
+supprimerresiliation:
+    path:     /SupprimerResiliation/{numeroContrat}
+    defaults: { _controller: BackEndBrokinsBundle:Resiliation:supprimers }
+

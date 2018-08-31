@@ -1,0 +1,93 @@
+<!-- Cette Inteface c'est La Page Qui Contient Le Formulaire Pour Pouvoir Ajouter Une Nouvelle Adresses Partenaires Assureurs
+ Qui Contient Aussi L'API : Google Place Auto Complete-->
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/components.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/responsee.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/owl-carousel/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/owl-carousel/owl.theme.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/template-style.css') }}">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/modernizr.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/modernizr.js') }}"></script>
+
+<center><h2>Adresse Partenaire Assureur</h2></center>
+
+<form class="customform"  method="POST">
+
+    <div class="s-12 l-7 center">
+
+        <select name="service" onChange="combo(this, 'theinput')" placeholder="Service" required="true">
+            <option></option>
+            <option>
+            <option>Prévention</option>
+            <option>Conseil</option>
+            <option>Avantage client</option>
+        </select>
+    </div>
+    <div class="s-12 l-7 center">
+        <input  type="text" class="form-control1" id="focusedinput" name='NOM_CONTACT_COMMERCIAL' placeholder="Nom Contact Commercial" required="true">
+    </div>
+    <div class="s-12 l-7 center">
+        <input  type="text" class="form-control1" id="focusedinput" name='PRENOM_CONTACT_COMMERCIAL' placeholder="Prenom Contact Commercial" >
+    </div>
+    <div class="s-12 l-7 center">
+        <input  type="text" class="form-control1" id="focusedinput" name='ADRESSE_MAIL_CONTACT_COMMERCIAL' placeholder="Adresse Mail Contact Commercial" required="true">
+    </div>
+
+
+    <div class="s-12 l-7 center">
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCbIb-5Sl4MSIZsAeTzvAkNwHJMCBNnDo0">
+        </script>
+        <script type="text/javascript" src="autocomplete.js"></script>
+
+        <input  id="user_input_autocomplete_address" name="ADRESSE_POSTALE_SERVICE" placeholder="Votre adresse...">
+        <input id="street_number" name="street_number" placeholder="Numéro de rue" disabled>
+        <input id="route" name="route" disabled placeholder="route">
+        <input id="locality" name="locality" disabled placeholder="Localisation">
+        <input id="country" name="country" disabled placeholder="Pays">
+        <script>
+            function initializeAutocomplete(id) {
+                var element = document.getElementById(id);
+                if (element) {
+                    var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+                    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+                }
+            }
+        </script>
+        <script>
+            function onPlaceChanged() {
+                var place = this.getPlace();
+
+
+                for (var i in place.address_components) {
+                    var component = place.address_components[i];
+                    for (var j in component.types) {  // Some types are ["country", "political"]
+                        var type_element = document.getElementById(component.types[j]);
+                        if (type_element) {
+                            type_element.value = component.long_name;
+                        }
+                    }
+                }
+            }
+        </script>
+        <script>
+            google.maps.event.addDomListener(window, 'load', function() {
+                initializeAutocomplete('user_input_autocomplete_address');
+            });
+        </script>
+
+    </div>
+
+    <div class="s-12 l-7 center">
+        <input  type="text" class="form-control1" id="focusedinput" name='TELEPHONR_SERVICE' placeholder="Telephone Service" required="true">
+    </div>
+    <div class="s-12 l-7 center">
+              <td><input  type="text" class="form-control1" id="focusedinput" name='EMAIL_SERVICE' placeholder="Email Service" required="true"></td>
+    </div>
+
+
+    <div class="s-12 l-5 center"><button type="submit">Ajouter Adresse Partenaire Assureur</button></div>
+</form>
+

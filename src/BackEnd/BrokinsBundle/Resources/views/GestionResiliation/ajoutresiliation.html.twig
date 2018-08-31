@@ -1,0 +1,116 @@
+<!-- Cette Inteface c'est La Page Qui Contient Le Formulaire Pour Pouvoir Ajouter Une Nouvelle Adresses Partenaires Assureurs
+ Qui Contient Aussi L'API : Google Place Auto Complete-->
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/components.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/responsee.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/owl-carousel/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/owl-carousel/owl.theme.css') }}">
+<link rel="stylesheet" href="{{ asset('FrontCSS/css/template-style.css') }}">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/modernizr.js') }}"></script>
+<script type="text/javascript" src="{{ asset('FrontCSS/js/modernizr.js') }}"></script>
+
+
+
+
+
+$dateRaisonResiliation = $request->get(' dateRaisonResiliation');
+$w = new \DateTime( $dateRaisonResiliation);
+$nouvelleAdresse = $request->get('nouvelleAdresse');
+
+
+
+<center><h2>Gestion Des Résiliations</h2></center>
+<form class="customform"  method="POST">
+
+    <div class="s-12 l-7 center">
+        <div class="s-12 l-7 center">
+            <input  type="text" class="form-control1" id="focusedinput" name='origineResiliation' placeholder="Origine Resiliation" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateDemande' placeholder="Date de Demande" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateEffetContrat' placeholder="Date Effet Contrat" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <select name="idRaisonResiliation" onChange="combo(this, 'theinput')" placeholder="Statut Du Contrat" required="true">
+                <option></option>
+                <option>Votre contrat arrive à échéance et vous respectez un préavis de 2 mois (sauf si votre contrat prévoit un délai de préavis plus court, vérifier donc votre contrat)</option>
+                <option>Votre assureur majore votre prime d’assurance (sans raison) ou votre franchise</option>
+                <option>Vous cessez votre activité, ou vous changez d’activité ou vous transférez le lieu d’exercice de votre activité à une autre adresse (dans la mesure où ce changement entraîne la suppression du risque qui existait dans votre situation antérieure)</option>
+                <option>Vous changez de situation maritale ou de régime matrimonial</option>
+                <option>Vous prenez votre retraite</option>
+            </select>
+        </div>
+
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateSignatureContrat' placeholder="Date De Signature Du Contrat" required="true">
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateEcheanceContrat' placeholder="Date D'Echéance Du Contrat" required="true">
+        </div>
+
+        <div class="s-12 l-7 center">
+
+            <select name="possibiliteResiliation" onChange="combo(this, 'theinput')" placeholder="Possibilité De Résiliation" required="true">
+                <option></option>
+                <option>OUI</option>
+                <option>NON</option>
+            </select>
+        </div>
+        <div class="s-12 l-7 center">
+            <input  type="date" class="form-control1" id="focusedinput" name='dateRaisonResiliation' placeholder="Date Raison De Résiliation" required="true">
+        </div>
+
+        <div class="s-12 l-7 center">
+            <script type="text/javascript"
+                    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCbIb-5Sl4MSIZsAeTzvAkNwHJMCBNnDo0">
+            </script>
+            <script type="text/javascript" src="autocomplete.js"></script>
+
+            <input  id="user_input_autocomplete_address" name="ADRESSE_POSTALE_SERVICE" placeholder="Votre adresse...">
+
+            <script>
+                function initializeAutocomplete(id) {
+                    var element = document.getElementById(id);
+                    if (element) {
+                        var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+                        google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+                    }
+                }
+            </script>
+            <script>
+                function onPlaceChanged() {
+                    var place = this.getPlace();
+
+
+                    for (var i in place.address_components) {
+                        var component = place.address_components[i];
+                        for (var j in component.types) {  // Some types are ["country", "political"]
+                            var type_element = document.getElementById(component.types[j]);
+                            if (type_element) {
+                                type_element.value = component.long_name;
+                            }
+                        }
+                    }
+                }
+            </script>
+            <script>
+                google.maps.event.addDomListener(window, 'load', function() {
+                    initializeAutocomplete('user_input_autocomplete_address');
+                });
+            </script>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="s-12 l-5 center"><button type="submit">Ajouter Une Demande De Résiliation</button></div>
+</form>

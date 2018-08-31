@@ -4,12 +4,28 @@ parameters:
     #parameter_name: value
 
 services:
-    admin.contrat:
-        class: Admin\AdminContrat
-        arguments: [~, BackEnd\BrokinsBundle\Entity\Contrat, ~]
+
+
+    admin.partenaireassureur:
+        class: Admin\AdminPartenaireAssureur
+        arguments: [~, BackEnd\BrokinsBundle\Entity\PartenaireAssureur, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Contrat }
+            - { name: sonata.admin, manager_type: orm, label: Partenaire Assureur }
+
+        calls:
+            - [ setTemplate, [list, BackEndBrokinsBundle:PartenaireAssureur:list.html.twig]]
         public: true
+
+
+    admin.banqueassureur:
+        class: Admin\AdminBanqueAssureur
+        arguments: [~, BackEnd\BrokinsBundle\Entity\BanqueAssureur, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Banque Assureur }
+
+
+        public: true
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
