@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comparatif</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ comparatif.id }}</td>
+            </tr>
+            <tr>
+                <th>Numerocomparatif</th>
+                <td>{{ comparatif.numeroComparatif }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if comparatif.dateCreation %}{{ comparatif.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dateenvoi</th>
+                <td>{% if comparatif.dateEnvoi %}{{ comparatif.dateEnvoi|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nombreassureur</th>
+                <td>{{ comparatif.nombreAssureur }}</td>
+            </tr>
+            <tr>
+                <th>Identifiantbrokins</th>
+                <td>{{ comparatif.identifiantBrokins }}</td>
+            </tr>
+            <tr>
+                <th>Referencedocumentaire</th>
+                <td>{{ comparatif.referenceDocumentaire }}</td>
+            </tr>
+            <tr>
+                <th>Produittechnique</th>
+                <td>{{ comparatif.produitTechnique }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('brokins_comparatif_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('brokins_comparatif_edit', { 'id': comparatif.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

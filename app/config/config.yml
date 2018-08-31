@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@BackEndBrokinsBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -73,7 +74,10 @@ services:
 fos_rest:
     param_fetcher_listener: true
     body_listener: true
-    format_listener: true
+    format_listener:
+        rules:
+            - { path: '^/api', priorities: ['json'], fallback_format: json, prefer_extension: false }
+            - { path: ^/, priorities: ['html', '*/*'], fallback_format: html, prefer_extension: true }
     view:
         view_response_listener: 'force'
         formats:
@@ -106,10 +110,27 @@ lexik_jwt_authentication:
     token_ttl:        3600
 
 nelmio_cors:
-    paths:
-        '^/api/':
-            allow_origin: ['http://localhost:4200']
-            allow_headers: ['origin','content-type','authorization']
-            allow_methods: ['POST', 'PUT', 'GET', 'DELETE','OPTIONS']
-            max_age: 3600
+      defaults:
+          allow_credentials: false
+          allow_origin: []
+          allow_headers: []
+          allow_methods: []
+          expose_headers: []
+          max_age: 0
+          hosts: []
+          origin_regex: false
+          forced_allow_origin_value: ~
+      paths:
+          '^/api/':
+              allow_origin: ['*']
+              allow_headers: ['X-Custom-Auth']
+              allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+              max_age: 3600
+          '^/':
+              origin_regex: true
+              allow_origin: ['^http://localhost:[0-9]+']
+              allow_headers: ['X-Custom-Auth']
+              allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+              max_age: 3600
+              hosts: ['^api\.']
 

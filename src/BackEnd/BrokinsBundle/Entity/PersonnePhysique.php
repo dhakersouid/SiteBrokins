@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="personne_physique")
  * @ORM\Entity
  */
-class PersonnePhysique extends Personne
+class PersonnePhysique
 {
     /**
      * @var integer
@@ -76,6 +76,76 @@ class PersonnePhysique extends Personne
      * @ORM\Column(name="ID_PROFESSION", type="integer", nullable=true)
      */
     private $idProfession;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IDENTIFIANT_BROKINS", type="string", length=15, nullable=true)
+     */
+    private $identifiantBrokins;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DATE_CREATION", type="date", nullable=true)
+     */
+    private $dateCreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DEBUT_CLIENT", type="date", nullable=true)
+     */
+    private $debutClient;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FIN_CLIENT", type="date", nullable=true)
+     */
+    private $finClient;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DATE_UPDATE", type="date", nullable=true)
+     */
+    private $dateUpdate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ORIGINE", type="string", length=50, nullable=true)
+     */
+    private $origine;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ROLE", type="string", length=50, nullable=true)
+     */
+    private $role;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ADRESSE", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="PROFESSIONNEL", type="boolean", nullable=true)
+     */
+    private $professionnel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NATURE_PERSONNE", type="string", length=2, nullable=true)
+     */
+    private $naturePersonne;
 
 
 }

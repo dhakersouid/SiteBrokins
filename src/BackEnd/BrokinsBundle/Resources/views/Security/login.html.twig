@@ -29,7 +29,7 @@
 
 </div>
 <br>
-<form action="{{ path("fos_user_security_check") }}" method="post">
+<form action="{{ path("api_fos_user_security_check") }}" method="post">
     <div class="panel-heading">
         <h3 class="panel-title">Veuillez vous identifier</h3>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -56,7 +56,7 @@
 
             <tr>
                 <td >
-                    <input class="form-control" type="text" placeholder="Nom d'utilisateur" id="username" name="_username" value="{{ last_username }}" required="required" />
+                    <input class="form-control" type="text" placeholder="Nom d'utilisateur" id="username" name="username" value="{{ last_username }}" required="required" />
                 </td>
                 <td align="center">
                     <label class="stylebleu" style="color:white;">OU</label>

@@ -17,13 +17,3 @@ services:
             - { name: sonata.admin, manager_type: orm, label: fos_user }
         public: true
     # default configuration for services in *this* file
-
-    acme_api.event.authentication_success_listener:
-        class: BackEnd\BrokinsBundle\EventListener\AuthenticationSuccessListener
-        tags:
-            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
-
-    acme_api.event.authentication_failure_listener:
-        class:  BackEnd\BrokinsBundle\EventListener\AuthenticationFailureListener
-        tags:
-            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_failure, method: onAuthenticationFailureResponse }

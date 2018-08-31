@@ -1,3 +1,11 @@
+back_end_brokins_comparatif:
+    resource: "@BackEndBrokinsBundle/Controller/ComparatifController.php"
+    type:     annotation
+
+comparatif:
+    resource: "@ComparatifBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 back_end_brokins:
     resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
@@ -13,6 +21,7 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-api_login_check:
-    path: /api/login_check
+user:
+    resource: "@BackEndBrokinsBundle/Resources/config/routing.yml"
+
 

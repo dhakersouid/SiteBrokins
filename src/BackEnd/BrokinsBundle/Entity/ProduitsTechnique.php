@@ -5,12 +5,12 @@ namespace BackEnd\BrokinsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * RefProduitsTechniqueCourt
+ * ProduitsTechnique
  *
- * @ORM\Table(name="ref_produits _technique_court")
+ * @ORM\Table(name="produits_technique")
  * @ORM\Entity
  */
-class RefProduitsTechniqueCourt
+class ProduitsTechnique
 {
     /**
      * @var integer
@@ -24,9 +24,9 @@ class RefProduitsTechniqueCourt
     /**
      * @var string
      *
-     * @ORM\Column(name="PRODUITS _TECHNIQUE_COURT", type="string", length=50, nullable=true)
+     * @ORM\Column(name="PRODUITS_TECHNIQUE_LONG", type="string", length=50, nullable=true)
      */
-    private $produitsTechniqueCourt;
+    private $produitsTechniqueLong;
 
 
 }
