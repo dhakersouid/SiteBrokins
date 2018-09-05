@@ -9,6 +9,7 @@
 namespace BackEnd\BrokinsBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -19,6 +20,15 @@ use BackEnd\BrokinsBundle\Manager\MyUserManager;
 use BackEnd\BrokinsBundle\Helper\ControllerHelper;
 class UserController extends Controller
 {
+
+    /**
+     * @Route("/api/testApi", name="test_api")
+     * @Method("GET")
+     */
+    public function testApiAction(){
+
+        return new JsonResponse(['ok']);
+    }
 
     /**
      * @Route("/login", name="user_login")

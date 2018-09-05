@@ -17,42 +17,31 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-        
-        login:
-            pattern:  ^/api
-            stateless: true
-            anonymous: true
-            form_login:
-                provider: fos_userbundle
-                check_path:               /api/login_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
-                username_parameter: username
-                password_parameter: password
 
         api:
             pattern:   ^/api
             stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
-                    
+            form_login:
+                provider: fos_userbundle
+                check_path:               api_fos_user_security_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
+            logout:       true
+            anonymous:    true
+
         main:
-            pattern:    .*
+            pattern: ^/
             form_login:
                 provider: fos_userbundle
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
                 csrf_token_generator: security.csrf.token_manager
                 success_handler: login_success_handler
-            
             logout:
                 path:   /logout
-                target: /
-            anonymous:    true
-
-                
+                target: /login
             anonymous:    true
 
     access_control:
@@ -61,8 +50,7 @@ security:
         - { path: ^/profile, role: [ROLE_ADMIN,ROLE_USER,ROLE_SUSPECT,ROLE_PROSPECT,ROLE_CLIENT] }
         - { path: ^/client/*, role: ROLE_USER }
         - { path: ^/admin/*, role: ROLE_ADMIN }
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
-        
+        - { path: ^/api/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
         
         

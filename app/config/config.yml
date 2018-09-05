@@ -9,6 +9,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    cors_allow_origin: http://localhost:4200
 
 framework:
     #esi:             ~
@@ -111,6 +112,7 @@ lexik_jwt_authentication:
     token_ttl:        3600
 
 nelmio_cors:
+
       defaults:
           allow_credentials: false
           allow_origin: []
@@ -134,8 +136,6 @@ nelmio_cors:
               allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
               max_age: 3600
               hosts: ['^api\.']
-
-
 
 framework:
         translator: { fallbacks: ["%locale%"] }
@@ -183,4 +183,7 @@ sonata_cache:
                 SND: { sec: 2, usec: 0 }
 twig:
     form_themes: ['bootstrap_4_layout.html.twig']
+
+
+
 
