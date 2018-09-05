@@ -17,8 +17,13 @@
         "php": ">=5.5.9",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/rest-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
+        "jms/serializer-bundle": "^2.4",
+        "knplabs/doctrine-behaviors": "~1.1",
+        "lexik/jwt-authentication-bundle": "^2.5",
+        "nelmio/cors-bundle": "^1.5",
         "ob/highcharts-bundle": "dev-master",
         "predis/predis": "~0.8",
         "sensio/distribution-bundle": "^5.0.19",
@@ -37,6 +42,7 @@
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
         "symfony/var-dumper": "^3.4"
@@ -76,5 +82,7 @@
         "branch-alias": {
             "dev-master": "3.4-dev"
         }
-    }
+    },
+    "conflict": {
+        "symfony/symfony": "3.4.8" }
 }

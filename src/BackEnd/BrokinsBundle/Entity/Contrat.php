@@ -3,8 +3,6 @@
 namespace BackEnd\BrokinsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-
 
 /**
  * Contrat
@@ -169,6 +167,7 @@ class Contrat
      * @ORM\Column(name="CAPITAUX_GARANTIS", type="integer", nullable=true)
      */
     private $capitauxGarantis;
+
 
     /**
      * @return int

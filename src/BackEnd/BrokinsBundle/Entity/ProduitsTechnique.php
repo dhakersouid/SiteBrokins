@@ -1,24 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dhaker
- * Date: 19/07/2018
- * Time: 17:35
- */
 
 namespace BackEnd\BrokinsBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
-use BackEnd\BrokinsBundle\Entity\Personne ;
-use FOS\UserBundle\Model\User as BaseUser;
 
 /**
- * EspaceClient
+ * ProduitsTechnique
  *
- * @ORM\Table(name="espaceclient")
+ * @ORM\Table(name="produits_technique")
  * @ORM\Entity
  */
-
-class EspaceClient
+class ProduitsTechnique
 {
     /**
      * @var integer
@@ -29,6 +21,13 @@ class EspaceClient
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PRODUITS_TECHNIQUE_LONG", type="string", length=50, nullable=true)
+     */
+    private $produitsTechniqueLong;
 
 
 }
+

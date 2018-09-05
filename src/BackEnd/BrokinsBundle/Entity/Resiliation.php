@@ -36,9 +36,9 @@ class Resiliation
     private $dateDemande;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="ID_RAISON_RESILIATION", type="integer", nullable=true)
+     * @ORM\Column(name="ID_RAISON_RESILIATION", type="string", length=200, nullable=true)
      */
     private $idRaisonResiliation;
 
@@ -64,25 +64,36 @@ class Resiliation
     private $dateEcheanceContrat;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="POSSIBILITE_RESILIATION", type="integer", nullable=true)
+     * @ORM\Column(name="POSSIBILITE_RESILIATION", type="string", length=11, nullable=true)
      */
     private $possibiliteResiliation;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="DATE_RAISON_RESILIATION", type="integer", nullable=true)
-     */
-    private $dateRaisonResiliation;
+
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="NOUVELLE_ADRESSE", type="integer", nullable=true)
+     * @ORM\Column(name="NOUVELLE_ADRESSE", type="string", length=100, nullable=true)
      */
     private $nouvelleAdresse;
+
+    /**
+     * @return string
+     */
+    public function getNouvelleAdresse()
+    {
+        return $this->nouvelleAdresse;
+    }
+
+    /**
+     * @param string $nouvelleAdresse
+     */
+    public function setNouvelleAdresse($nouvelleAdresse)
+    {
+        $this->nouvelleAdresse = $nouvelleAdresse;
+    }
 
     /**
      * @var integer
@@ -226,37 +237,9 @@ class Resiliation
         $this->possibiliteResiliation = $possibiliteResiliation;
     }
 
-    /**
-     * @return int
-     */
-    public function getDateRaisonResiliation()
-    {
-        return $this->dateRaisonResiliation;
-    }
 
-    /**
-     * @param int $dateRaisonResiliation
-     */
-    public function setDateRaisonResiliation($dateRaisonResiliation)
-    {
-        $this->dateRaisonResiliation = $dateRaisonResiliation;
-    }
 
-    /**
-     * @return int
-     */
-    public function getNouvelleAdresse()
-    {
-        return $this->nouvelleAdresse;
-    }
 
-    /**
-     * @param int $nouvelleAdresse
-     */
-    public function setNouvelleAdresse($nouvelleAdresse)
-    {
-        $this->nouvelleAdresse = $nouvelleAdresse;
-    }
 
     /**
      * @return int

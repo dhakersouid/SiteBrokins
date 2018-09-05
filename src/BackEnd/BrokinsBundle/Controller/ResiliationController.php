@@ -20,7 +20,6 @@ class ResiliationController extends Controller
 
 
     public function ajoutAction() {
-        $idRaisonResiliation=2;
 
         $request = $this->get('request_stack')->getCurrentRequest();
         if ($request->getMethod() == 'POST') {
@@ -28,16 +27,15 @@ class ResiliationController extends Controller
             $id = $request->get('id');
             $origineResiliation = $request->get('origineResiliation');
             $dateDemande = $request->get('dateDemande');
-            $x = new \DateTime($dateDemande);
+            $a = new \DateTime($dateDemande);
             $idRaisonResiliation = $request->get('idRaisonResiliation');
             $idContrat = $request->get('idContrat');
             $dateSignatureContrat = $request->get('dateSignatureContrat');
-            $z = new \DateTime($dateSignatureContrat);
+            $b = new \DateTime($dateSignatureContrat);
             $dateEcheanceContrat = $request->get('dateEcheanceContrat');
-            $a = new \DateTime($dateEcheanceContrat);
+            $c = new \DateTime($dateEcheanceContrat);
             $possibiliteResiliation = $request->get('possibiliteResiliation');
-            $dateRaisonResiliation = $request->get(' dateRaisonResiliation');
-            $w = new \DateTime( $dateRaisonResiliation);
+
             $nouvelleAdresse = $request->get('nouvelleAdresse');
             $idPiece = $request->get('$idPiece');
             $idPaiementPoste = $request->get('$idPaiementPoste');
@@ -46,14 +44,12 @@ class ResiliationController extends Controller
 
             $modele->setId($id);
             $modele->setOrigineResiliation($origineResiliation);
-            $modele->setDateDemande($x);
-            $modele->setIdRaisonResiliation(2);
+            $modele->setDateDemande($a);
+            $modele->setIdRaisonResiliation($idRaisonResiliation);
             $modele->setIdContrat(4);
-            $modele->setDateSignatureContrat($x);
-            $modele->setDateEcheanceContrat($a);
+            $modele->setDateSignatureContrat($b);
+            $modele->setDateEcheanceContrat($c);
             $modele->setPossibiliteResiliation($possibiliteResiliation);
-            $modele->setDateRaisonResiliation($w);
-            $modele->setDateEcheanceContrat($a);
             $modele->setNouvelleAdresse($nouvelleAdresse);
             $modele->setIdPiece(1);
             $modele->setIdPaiementPoste(5);

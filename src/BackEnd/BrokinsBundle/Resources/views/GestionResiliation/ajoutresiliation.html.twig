@@ -16,12 +16,6 @@
 
 
 
-$dateRaisonResiliation = $request->get(' dateRaisonResiliation');
-$w = new \DateTime( $dateRaisonResiliation);
-$nouvelleAdresse = $request->get('nouvelleAdresse');
-
-
-
 <center><h2>Gestion Des Résiliations</h2></center>
 <form class="customform"  method="POST">
 
@@ -32,9 +26,7 @@ $nouvelleAdresse = $request->get('nouvelleAdresse');
         <div class="s-12 l-7 center">
             <input  type="date" class="form-control1" id="focusedinput" name='dateDemande' placeholder="Date de Demande" required="true">
         </div>
-        <div class="s-12 l-7 center">
-            <input  type="date" class="form-control1" id="focusedinput" name='dateEffetContrat' placeholder="Date Effet Contrat" required="true">
-        </div>
+
         <div class="s-12 l-7 center">
             <select name="idRaisonResiliation" onChange="combo(this, 'theinput')" placeholder="Statut Du Contrat" required="true">
                 <option></option>
@@ -60,10 +52,10 @@ $nouvelleAdresse = $request->get('nouvelleAdresse');
                 <option>OUI</option>
                 <option>NON</option>
             </select>
+
         </div>
-        <div class="s-12 l-7 center">
-            <input  type="date" class="form-control1" id="focusedinput" name='dateRaisonResiliation' placeholder="Date Raison De Résiliation" required="true">
-        </div>
+
+
 
         <div class="s-12 l-7 center">
             <script type="text/javascript"
@@ -71,8 +63,7 @@ $nouvelleAdresse = $request->get('nouvelleAdresse');
             </script>
             <script type="text/javascript" src="autocomplete.js"></script>
 
-            <input  id="user_input_autocomplete_address" name="ADRESSE_POSTALE_SERVICE" placeholder="Votre adresse...">
-
+            <input  id="user_input_autocomplete_address" name="nouvelleAdresse" placeholder="Votre adresse...">
             <script>
                 function initializeAutocomplete(id) {
                     var element = document.getElementById(id);
@@ -85,7 +76,6 @@ $nouvelleAdresse = $request->get('nouvelleAdresse');
             <script>
                 function onPlaceChanged() {
                     var place = this.getPlace();
-
 
                     for (var i in place.address_components) {
                         var component = place.address_components[i];
@@ -106,11 +96,7 @@ $nouvelleAdresse = $request->get('nouvelleAdresse');
 
         </div>
 
-
-
     </div>
+        <div class="s-12 l-5 center"><button type="submit">Ajouter Une Demande De Résiliation</button></div>
 
-
-
-    <div class="s-12 l-5 center"><button type="submit">Ajouter Une Demande De Résiliation</button></div>
 </form>

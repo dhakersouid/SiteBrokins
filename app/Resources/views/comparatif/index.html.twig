@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comparatifs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numerocomparatif</th>
+                <th>Datecreation</th>
+                <th>Dateenvoi</th>
+                <th>Nombreassureur</th>
+                <th>Identifiantbrokins</th>
+                <th>Referencedocumentaire</th>
+                <th>Produittechnique</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comparatif in comparatifs %}
+            <tr>
+                <td><a href="{{ path('brokins_comparatif_show', { 'id': comparatif.id }) }}">{{ comparatif.id }}</a></td>
+                <td>{{ comparatif.numeroComparatif }}</td>
+                <td>{% if comparatif.dateCreation %}{{ comparatif.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if comparatif.dateEnvoi %}{{ comparatif.dateEnvoi|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ comparatif.nombreAssureur }}</td>
+                <td>{{ comparatif.identifiantBrokins }}</td>
+                <td>{{ comparatif.referenceDocumentaire }}</td>
+                <td>{{ comparatif.produitTechnique }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('brokins_comparatif_show', { 'id': comparatif.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('brokins_comparatif_edit', { 'id': comparatif.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('brokins_comparatif_new') }}">Create a new comparatif</a>
+        </li>
+    </ul>
+{% endblock %}

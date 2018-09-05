@@ -1,0 +1,6 @@
+comparatif_homepage:
+    path:     /devisPJentreprise
+    defaults: { _controller: ComparatifBundle:Default:index }
+comparatif_test:
+    path:     /testdevisPJentreprise
+    defaults: { _controller: ComparatifBundle:Default:add }

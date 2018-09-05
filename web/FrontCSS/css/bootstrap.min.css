@@ -1401,7 +1401,7 @@ pre code {
   }
 }
 table {
-  max-width: 50%;
+  max-width: 100%;
   background-color: transparent;
 }
 th {
