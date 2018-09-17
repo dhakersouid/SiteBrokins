@@ -86,3 +86,11 @@ fos_user_security_logout:
     path:     /logout
     defaults: { _controller: BackEndBrokinsBundle:Security:logout }
     methods: [GET]
+
+
+resiliation_services :
+    resource: "@BackEndBrokinsBundle/Controller/WebServices/WSResiliationController.php"
+    type:     annotation
+    prefix:   /
+    defaults:
+        _format: json
